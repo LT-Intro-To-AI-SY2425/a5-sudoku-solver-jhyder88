@@ -139,7 +139,15 @@ class Board:
             column - index of the column to assign
             assignment - value to place at given row, column coordinate
         """
-        pass
+        self.rows[row][column] = assignment
+        for i in range(self.size):
+            remove_if_exists(self.rows[row][i], assignment)
+            remove_if_exists(self.rows[i][column], assignment)
+
+        for i, j in self.subgrid_coordinates(row, column):
+            remove_if_exists(self.rows[i][j], assignment)
+
+   
 
 
 def DFS(state: Board) -> Board:
@@ -279,13 +287,13 @@ if __name__ == "__main__":
     # remove_if_exists(b.rows[6][7], 6)
     # #we removed 5 items from positions (4,8) so that should now be the most
     # #  constrained.
-    # assert b.find_most_constrained_cell() == (4,8), "find most constrained cell test 1"
-    # assert b.failure_test() == False, "failure test test 1"
-    # assert b.goal_test() == False, "goal test test 1"
+     assert b.find_most_constrained_cell() == (4,8), "find most constrained cell test 1"
+     assert b.failure_test() == False, "failure test test 1"
+     assert b.goal_test() == False, "goal test test 1"
 
     # b.rows[4][3] = []
-    # assert b.find_most_constrained_cell() == (4,3), "find most constrained cell test 2"
-    # assert b.failure_test() == True, "failure test test 2"
+     assert b.find_most_constrained_cell() == (4,3), "find most constrained cell test 2"
+     assert b.failure_test() == True, "failure test test 2"
     # print("All part 1 tests passed!")
 
     # ##Now, let's write some quick tests to check update!
@@ -300,14 +308,14 @@ if __name__ == "__main__":
     # #  cases by looking at the board and listing what values are
     # #  still possible for a specific cell. I have created
     # #  2 such test cases like that for you. 
-    # assert g.rows[0][2] == [2,5,6], "update test 1"
-    # assert g.rows[5][5] == [3,7,9], "update test 2"
-    # assert g.num_nums_placed == 28, "update test 3"
-    # assert g.find_most_constrained_cell() == (1,7), "fmc test"
-    # assert g.failure_test() == False, "failure test test"
-    # assert g.goal_test() == False, "goal test test"
+    assert g.rows[0][2] == [2,5,6], "update test 1"
+    assert g.rows[5][5] == [3,7,9], "update test 2"
+    assert g.num_nums_placed == 28, "update test 3"
+    assert g.find_most_constrained_cell() == (1,7), "fmc test"
+    assert g.failure_test() == False, "failure test test"
+    assert g.goal_test() == False, "goal test test"
     # g.num_nums_placed = 81
-    # assert g.goal_test() == True, "goal test test"
+     assert g.goal_test() == True, "goal test test"
     # print("All part 2 tests passed! Testing DFS and BFS next:")
 
     # print("<<<<<<<<<<<<<< Testing DFS on First Game >>>>>>>>>>>>>>")
