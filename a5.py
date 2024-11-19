@@ -193,6 +193,7 @@ def DFS(state: Board) -> Board:
             cpy = copy.deepcopy(b)
             cpy.update(row, col, val)
             cpy.push(b)
+    return None
 
 
 
