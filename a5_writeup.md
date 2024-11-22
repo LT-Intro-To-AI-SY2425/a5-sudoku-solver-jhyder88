@@ -27,7 +27,7 @@ BFS is more preferable in a scenario in which their isn't a cap to how deep the 
 
 
 2. How did the choice of data structures (like the Stack for DFS and Queue for BFS) impact the implementation and functionality of the algorithms? Are there alternative data structures or design patterns that could have been used to achieve the same objectives?
-
+The FIFO/LIFO aspect of the code likely impacted the efficiency as seen through the different numbers of iterations between each use (Stack versus Queue). After searching it up on Google, I found that priority queue could also be used for this time of code, as it'd place certain elements/aspects over others in order to make for more efficient code.
 
 
 3. Considering the current implementation, how might the Sudoku solver be adapted or extended for larger puzzles or different types of grid-based logic games? How can the lessons learned from this assignment be applied to real-world problem-solving or optimization challenges?
